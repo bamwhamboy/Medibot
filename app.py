@@ -60,22 +60,22 @@ section[data-testid="stSidebar"] hr{border-color:#E7E4DC !important;}
 .sb-icon{width:46px;height:46px;background:#0F6E5C;
   border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:21px;
   margin:0 auto 10px;box-shadow:0 4px 14px rgba(15,110,92,.22);}
-.sb-title{font-family:'Fraunces',serif;font-size:19px;font-weight:700;color:#1A1F2B !important;letter-spacing:-.3px;}
-.sb-sub{font-size:9.5px;color:#94A3B8 !important;letter-spacing:1.6px;text-transform:uppercase;margin-top:3px;font-weight:600;}
+.sb-title{font-family:'Fraunces',serif;font-size:21px;font-weight:700;color:#1A1F2B !important;letter-spacing:-.3px;}
+.sb-sub{font-size:10.5px;color:#94A3B8 !important;letter-spacing:1.6px;text-transform:uppercase;margin-top:3px;font-weight:600;}
 
 /* Sidebar user card */
 .sb-user-card{margin:14px 14px 0;background:#FAFAF8;
   border:1px solid #E7E4DC;border-radius:14px;padding:13px;}
 .sb-av{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;
-  justify-content:center;font-size:13px;font-weight:700;color:white;flex-shrink:0;}
-.sb-uname{font-size:12.5px;font-weight:600;color:#1A1F2B !important;}
-.sb-udept{font-size:10.5px;color:#94A3B8 !important;margin-top:1px;}
+  justify-content:center;font-size:14px;font-weight:700;color:white;flex-shrink:0;}
+.sb-uname{font-size:14px;font-weight:600;color:#1A1F2B !important;}
+.sb-udept{font-size:12px;color:#94A3B8 !important;margin-top:1px;}
 .online-dot{width:6px;height:6px;border-radius:50%;background:#0F9D6C;
   box-shadow:0 0 0 2px rgba(15,157,108,.18);display:inline-block;}
 
 /* Role badges (ID-card tab style) */
-.role-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 11px;
-  border-radius:6px;font-size:10px;font-weight:700;letter-spacing:.5px;
+.role-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 12px;
+  border-radius:6px;font-size:11.5px;font-weight:700;letter-spacing:.5px;
   text-transform:uppercase;margin-top:6px;border-left:3px solid;}
 .badge-doctor{background:#EAF7F2;color:#0F6E5C !important;border-color:#0F6E5C;}
 .badge-nurse{background:#EAF1FB;color:#2563EB !important;border-color:#2563EB;}
@@ -84,8 +84,8 @@ section[data-testid="stSidebar"] hr{border-color:#E7E4DC !important;}
 .badge-admin{background:#FCEEEA;color:#C2410C !important;border-color:#C2410C;}
 
 /* Collection chips */
-.coll-chip{display:flex;align-items:center;gap:7px;padding:6px 12px;border-radius:8px;
-  font-size:11.5px;font-weight:600;margin:4px 0;border:1px solid;}
+.coll-chip{display:flex;align-items:center;gap:7px;padding:7px 13px;border-radius:8px;
+  font-size:13px;font-weight:600;margin:4px 0;border:1px solid;}
 .coll-general{background:#F8FAFC;border-color:#E2E8F0;color:#64748B !important;}
 .coll-clinical{background:#EAF7F2;border-color:#CDEEE1;color:#0F6E5C !important;}
 .coll-nursing{background:#EAF1FB;border-color:#CFE0FA;color:#2563EB !important;}
@@ -94,7 +94,7 @@ section[data-testid="stSidebar"] hr{border-color:#E7E4DC !important;}
 .coll-locked{background:#F8FAFC;border-color:#EDEDED;color:#C2C7CF !important;}
 
 /* Stats */
-.stat-pill{display:flex;align-items:center;gap:6px;padding:4px 0;font-size:11.5px;color:#64748B !important;}
+.stat-pill{display:flex;align-items:center;gap:6px;padding:5px 0;font-size:13px;color:#64748B !important;}
 .stat-pill span{color:#0F6E5C !important;font-weight:700;}
 
 /* Login */
@@ -102,18 +102,18 @@ section[data-testid="stSidebar"] hr{border-color:#E7E4DC !important;}
 .login-icon-ring{width:68px;height:68px;background:#0F6E5C;
   border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:30px;
   margin:0 auto 18px;box-shadow:0 10px 28px rgba(15,110,92,.22);}
-.login-title{font-family:'Fraunces',serif;font-size:38px;font-weight:700;color:#1A1F2B;letter-spacing:-1.2px;}
-.login-sub{font-size:13.5px;color:#64748B;margin-top:9px;line-height:1.6;}
+.login-title{font-family:'Fraunces',serif;font-size:42px;font-weight:700;color:#1A1F2B;letter-spacing:-1.2px;}
+.login-sub{font-size:15px;color:#64748B;margin-top:9px;line-height:1.6;}
 .login-features{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:16px;}
 .login-feat-chip{background:#FFFFFF;border:1px solid #E7E4DC;
-  border-radius:20px;padding:5px 13px;font-size:11.5px;font-weight:600;color:#475569;}
+  border-radius:20px;padding:6px 14px;font-size:13px;font-weight:600;color:#475569;}
 .key-panel{background:#FDF3E7;border:1px solid #F5DFB8;
   border-radius:12px;padding:13px 17px;margin-bottom:16px;}
-.key-panel-title{font-size:12.5px;font-weight:700;color:#B7791F;}
-.key-panel-sub{font-size:11.5px;color:#92621A;margin-top:3px;}
+.key-panel-title{font-size:14px;font-weight:700;color:#B7791F;}
+.key-panel-sub{font-size:13px;color:#92621A;margin-top:3px;}
 .key-panel-sub a{color:#B7791F;font-weight:600;}
 .pwd-banner{background:#EAF7F2;border:1px solid #CDEEE1;
-  border-radius:10px;padding:11px 15px;margin-bottom:16px;font-size:12.5px;color:#0F6E5C;
+  border-radius:10px;padding:11px 15px;margin-bottom:16px;font-size:14px;color:#0F6E5C;
   display:flex;align-items:center;gap:8px;}
 .user-card{background:#FFFFFF;border:1px solid #E7E4DC;
   border-radius:14px;padding:16px;margin:6px 0;position:relative;overflow:hidden;
@@ -130,12 +130,12 @@ section[data-testid="stSidebar"] hr{border-color:#E7E4DC !important;}
 .uc-doctor-bg{background:#EAF7F2;}.uc-nurse-bg{background:#EAF1FB;}
 .uc-billing-bg{background:#FDF3E7;}.uc-technician-bg{background:#F3EEFB;}
 .uc-admin-bg{background:#FCEEEA;}
-.uc-name{font-size:13.5px;font-weight:700;color:#1A1F2B;}
-.uc-dept{font-size:10.5px;color:#94A3B8;margin-top:1px;}
-.uc-creds{font-size:11px;font-family:'JetBrains Mono',monospace;color:#475569;margin-top:9px;
+.uc-name{font-size:15px;font-weight:700;color:#1A1F2B;}
+.uc-dept{font-size:12px;color:#94A3B8;margin-top:1px;}
+.uc-creds{font-size:12.5px;font-family:'JetBrains Mono',monospace;color:#475569;margin-top:9px;
   padding:5px 9px;background:#FAFAF8;border-radius:6px;
   border:1px solid #EDEDED;}
-.uc-access{font-size:10.5px;color:#94A3B8;margin-top:5px;}
+.uc-access{font-size:12px;color:#94A3B8;margin-top:5px;}
 
 /* Messages */
 .msg-row-user{display:flex;justify-content:flex-end;margin:14px 0;}
@@ -143,43 +143,43 @@ section[data-testid="stSidebar"] hr{border-color:#E7E4DC !important;}
 .msg-row-blocked{display:flex;justify-content:flex-start;align-items:flex-start;gap:10px;margin:14px 0;}
 
 .bubble-user{background:#1A1F2B;color:#FAFAF8;
-  padding:12px 17px;border-radius:16px 16px 4px 16px;max-width:70%;font-size:13.5px;
+  padding:12px 17px;border-radius:16px 16px 4px 16px;max-width:70%;font-size:15px;
   line-height:1.65;word-wrap:break-word;}
 .bot-avatar{width:34px;height:34px;background:#0F6E5C;
   border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;
   flex-shrink:0;margin-top:2px;}
 .bubble-bot{background:#FFFFFF;color:#1A1F2B;padding:15px 19px;
-  border-radius:4px 16px 16px 16px;max-width:80%;font-size:13.5px;line-height:1.78;
+  border-radius:4px 16px 16px 16px;max-width:80%;font-size:15px;line-height:1.78;
   border:1px solid #E7E4DC;word-wrap:break-word;}
 .bubble-bot strong{color:#0F6E5C;}
 .blocked-avatar{width:34px;height:34px;background:#E8623D;
   border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:15px;
   flex-shrink:0;margin-top:2px;}
 .bubble-blocked{background:#FCEEEA;color:#9A3412;padding:13px 17px;
-  border-radius:4px 16px 16px 16px;max-width:80%;font-size:13.5px;line-height:1.68;
+  border-radius:4px 16px 16px 16px;max-width:80%;font-size:15px;line-height:1.68;
   border:1px solid #F6D2C2;}
 .bubble-blocked strong{color:#C2410C;}
 .sources-row{margin-top:12px;padding-top:10px;border-top:1px solid #EDEDED;}
 .src-chip{display:inline-flex;align-items:center;gap:4px;background:#EAF7F2;
   color:#0F6E5C;border:1px solid #CDEEE1;border-radius:7px;
-  padding:4px 10px;font-size:10.5px;font-weight:600;margin:2px 3px;}
-.ret-badge{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:20px;
-  font-size:10.5px;font-weight:700;margin-top:8px;}
+  padding:5px 11px;font-size:12px;font-weight:600;margin:2px 3px;}
+.ret-badge{display:inline-flex;align-items:center;gap:4px;padding:4px 11px;border-radius:20px;
+  font-size:12px;font-weight:700;margin-top:8px;}
 .ret-hybrid{background:#EAF1FB;color:#2563EB;border:1px solid #CFE0FA;}
 .ret-sql{background:#F3EEFB;color:#7C3AED;border:1px solid #E1D4FA;}
 .sql-box{margin-top:10px;background:#1A1F2B;border-radius:9px;padding:11px 14px;
-  font-size:11.5px;font-family:'JetBrains Mono',monospace;color:#5EEAD4;
+  font-size:13px;font-family:'JetBrains Mono',monospace;color:#5EEAD4;
   border:1px solid #2A3142;overflow-x:auto;line-height:1.6;}
 .welcome-banner{background:#FFFFFF;border:1px solid #E7E4DC;
   border-radius:14px;padding:15px 19px;display:flex;align-items:center;gap:14px;margin-bottom:10px;}
 .welcome-icon{font-size:26px;flex-shrink:0;}
-.welcome-text{font-size:13px;color:#475569;line-height:1.6;}
+.welcome-text{font-size:14.5px;color:#475569;line-height:1.6;}
 .welcome-text strong{color:#0F6E5C;}
 
 /* Input */
 .stTextInput>div>div>input{
   border-radius:12px !important;border:1.5px solid #E7E4DC !important;
-  padding:11px 15px !important;font-size:13.5px !important;font-family:'Inter',sans-serif !important;
+  padding:12px 16px !important;font-size:15px !important;font-family:'Inter',sans-serif !important;
   background:#FFFFFF !important;color:#1A1F2B !important;transition:all .15s !important;}
 .stTextInput>div>div>input::placeholder{color:#B0B7C3 !important;}
 .stTextInput>div>div>input:focus{border-color:#0F6E5C !important;
@@ -689,8 +689,8 @@ def render_chat():
     h1, h2 = st.columns([5,1])
     with h1:
         tags = " ".join(
-            f'<span style="font-size:11px;background:{COLL_BG[c]};color:{COLL_FG[c]};'
-            f'padding:3px 9px;border-radius:7px;margin-right:4px;font-weight:600;">{COLLECTION_META[c]["icon"]} {c.title()}</span>'
+            f'<span style="font-size:12.5px;background:{COLL_BG[c]};color:{COLL_FG[c]};'
+            f'padding:3px 10px;border-radius:7px;margin-right:4px;font-weight:600;">{COLLECTION_META[c]["icon"]} {c.title()}</span>'
             for c in colls
         )
         st.markdown(f"""
@@ -699,11 +699,11 @@ def render_chat():
                 <div style="width:36px;height:36px;background:#0F6E5C;
                 border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;">🏥</div>
                 <div>
-                    <div style="font-family:'Fraunces',serif;font-size:18px;font-weight:700;color:#1A1F2B;line-height:1.2;letter-spacing:-.3px;">
+                    <div style="font-family:'Fraunces',serif;font-size:20px;font-weight:700;color:#1A1F2B;line-height:1.2;letter-spacing:-.3px;">
                         MediBot <span class="online-dot" style="margin-left:3px;"></span>
-                        <span style="font-size:10.5px;font-weight:600;color:#0F9D6C;vertical-align:middle;">Online</span>
+                        <span style="font-size:12px;font-weight:600;color:#0F9D6C;vertical-align:middle;">Online</span>
                     </div>
-                    <div style="font-size:11.5px;color:#94A3B8;margin-top:3px;">
+                    <div style="font-size:13px;color:#94A3B8;margin-top:3px;">
                         {meta['icon']} {st.session_state.display_name} &nbsp;·&nbsp; {tags}
                     </div>
                 </div>
