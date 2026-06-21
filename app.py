@@ -189,10 +189,28 @@ section[data-testid="stSidebar"] hr{border-color:#E7E4DC !important;}
   color:white !important;border:none !important;box-shadow:0 3px 10px rgba(15,110,92,.25) !important;}
 .stButton>button[kind="primary"]:hover{background:#0C5847 !important;
   transform:translateY(-1px) !important;box-shadow:0 5px 14px rgba(15,110,92,.32) !important;}
+.stButton>button[kind="primary"] p{color:white !important;}
+
 .stButton>button[kind="secondary"]{background:#FFFFFF !important;
-  border:1px solid #E7E4DC !important;color:#475569 !important;}
+  border:1.5px solid #E7E4DC !important;color:#475569 !important;}
+.stButton>button[kind="secondary"] p{color:#475569 !important;}
 .stButton>button[kind="secondary"]:hover{background:#EAF7F2 !important;
   border-color:#CDEEE1 !important;color:#0F6E5C !important;}
+.stButton>button[kind="secondary"]:hover p{color:#0F6E5C !important;}
+
+/* Header action buttons (Back / Clear) — distinct from generic secondary buttons */
+.back-btn button{background:#FFFFFF !important;border:1.5px solid #CFE0FA !important;
+  color:#2563EB !important;}
+.back-btn button p{color:#2563EB !important;}
+.back-btn button:hover{background:#EAF1FB !important;border-color:#93C5FD !important;
+  color:#1D4ED8 !important;}
+.back-btn button:hover p{color:#1D4ED8 !important;}
+.clear-btn button{background:#FFFFFF !important;border:1.5px solid #F6D2C2 !important;
+  color:#C2410C !important;}
+.clear-btn button p{color:#C2410C !important;}
+.clear-btn button:hover{background:#FCEEEA !important;border-color:#E8623D !important;
+  color:#9A3412 !important;}
+.clear-btn button:hover p{color:#9A3412 !important;}
 .stSelectbox>div>div{border-radius:9px !important;border:1px solid #E7E4DC !important;
   background:#FFFFFF !important;}
 .stAlert{border-radius:11px !important;}
@@ -713,16 +731,20 @@ def render_chat():
             </div>
         </div>""", unsafe_allow_html=True)
     with h2:
+        st.markdown('<div class="back-btn">', unsafe_allow_html=True)
         if st.button("← Back", help="Back to login screen"):
             st.session_state.update({
                 "logged_in":False,"username":None,"role":None,
                 "display_name":None,"dept":None,"initials":None,"messages":[],
             })
             st.rerun()
+        st.markdown('</div>', unsafe_allow_html=True)
     with h3:
+        st.markdown('<div class="clear-btn">', unsafe_allow_html=True)
         if st.button("🗑️ Clear", help="Clear chat"):
             st.session_state.messages = []
             st.rerun()
+        st.markdown('</div>', unsafe_allow_html=True)
 
     # ── Welcome banner ───────────────────────────────────────────────────────
     if is_fresh:
