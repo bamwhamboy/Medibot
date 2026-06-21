@@ -642,16 +642,19 @@ def render_bot_msg(data:dict):
                     f'color:#94A3B8;cursor:pointer;font-weight:600;">🗄️ View SQL query</summary>'
                     f'<div class="sql-box">{q}</div></details>')
 
-    st.markdown(f"""
-    <div class="msg-row-bot">
-        <div class="bot-avatar">🏥</div>
-        <div class="bubble-bot">
-            {answer_html}
-            {src_html}
-            <div style="margin-top:9px;"><span class="ret-badge {bclass}">{blabel}</span></div>
-            {sql_html}
-        </div>
-    </div>""", unsafe_allow_html=True)
+    # NOTE: built as a single unindented line on purpose — Streamlit's markdown
+    # parser can mis-split indented multi-line HTML blocks and leak a stray
+    # closing tag as literal text in its own block. Keeping this flat avoids that.
+    html = ('<div class="msg-row-bot">'
+            '<div class="bot-avatar">🏥</div>'
+            '<div class="bubble-bot">'
+            f'{answer_html}'
+            f'{src_html}'
+            f'<div style="margin-top:9px;"><span class="ret-badge {bclass}">{blabel}</span></div>'
+            f'{sql_html}'
+            '</div>'
+            '</div>')
+    st.markdown(html, unsafe_allow_html=True)
 
     if st.session_state.show_debug and data.get("debug"):
         with st.expander("🔬 Retrieval debug"):
@@ -659,11 +662,11 @@ def render_bot_msg(data:dict):
 
 def render_blocked_msg(content:str):
     html = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', content.replace("\n","<br>"))
-    st.markdown(f"""
-    <div class="msg-row-blocked">
-        <div class="blocked-avatar">🔒</div>
-        <div class="bubble-blocked">{html}</div>
-    </div>""", unsafe_allow_html=True)
+    block = ('<div class="msg-row-blocked">'
+             '<div class="blocked-avatar">🔒</div>'
+             f'<div class="bubble-blocked">{html}</div>'
+             '</div>')
+    st.markdown(block, unsafe_allow_html=True)
 
 # ═══════════════════════════════════════════════════════════════════════
 # CHAT
@@ -686,7 +689,7 @@ def render_chat():
     COLL_BG = {"general":"#F8FAFC","clinical":"#EAF7F2","nursing":"#EAF1FB","billing":"#FDF3E7","equipment":"#F3EEFB"}
     COLL_FG = {"general":"#64748B","clinical":"#0F6E5C","nursing":"#2563EB","billing":"#B7791F","equipment":"#7C3AED"}
 
-    h1, h2 = st.columns([5,1])
+    h1, h2, h3 = st.columns([5,0.9,0.9])
     with h1:
         tags = " ".join(
             f'<span style="font-size:12.5px;background:{COLL_BG[c]};color:{COLL_FG[c]};'
@@ -710,6 +713,13 @@ def render_chat():
             </div>
         </div>""", unsafe_allow_html=True)
     with h2:
+        if st.button("← Back", help="Back to login screen"):
+            st.session_state.update({
+                "logged_in":False,"username":None,"role":None,
+                "display_name":None,"dept":None,"initials":None,"messages":[],
+            })
+            st.rerun()
+    with h3:
         if st.button("🗑️ Clear", help="Clear chat"):
             st.session_state.messages = []
             st.rerun()
@@ -742,14 +752,7 @@ def render_chat():
                         st.rerun()
         st.markdown('<div style="height:6px"></div>', unsafe_allow_html=True)
 
-    # ── Message history ───────────────────────────────────────────────────────
-    for msg in st.session_state.messages:
-        if msg["role"]=="user": render_user_msg(msg["content"])
-        elif msg["role"]=="assistant": render_bot_msg(msg["data"])
-        elif msg["role"]=="blocked": render_blocked_msg(msg["content"])
-
-    # ── Input bar ─────────────────────────────────────────────────────────────
-    st.markdown('<div style="height:14px"></div>', unsafe_allow_html=True)
+    # ── Input bar (placed above history since newest messages render on top) ──
     with st.form("chat_form", clear_on_submit=True):
         fi, fb = st.columns([7,1])
         with fi:
@@ -763,6 +766,35 @@ def render_chat():
     if sent and user_input.strip():
         st.session_state.run_question = user_input.strip()
         st.rerun()
+
+    st.markdown('<div style="height:14px"></div>', unsafe_allow_html=True)
+
+    # ── Message history (newest first, pairs kept together) ──────────────────
+    # Messages are stored chronologically as they happen: user, then
+    # assistant/blocked. Group into pairs first, then reverse pair order so
+    # the latest question+answer appears at the top, while within a pair the
+    # question still appears above its answer.
+    msgs = st.session_state.messages
+    pairs = []
+    i = 0
+    while i < len(msgs):
+        if msgs[i]["role"] == "user":
+            pair = [msgs[i]]
+            if i + 1 < len(msgs) and msgs[i+1]["role"] in ("assistant", "blocked"):
+                pair.append(msgs[i+1])
+                i += 2
+            else:
+                i += 1
+            pairs.append(pair)
+        else:
+            pairs.append([msgs[i]])
+            i += 1
+
+    for pair in reversed(pairs):
+        for msg in pair:
+            if msg["role"]=="user": render_user_msg(msg["content"])
+            elif msg["role"]=="assistant": render_bot_msg(msg["data"])
+            elif msg["role"]=="blocked": render_blocked_msg(msg["content"])
 
 # ═══════════════════════════════════════════════════════════════════════
 # MAIN
