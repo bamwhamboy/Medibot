@@ -198,19 +198,28 @@ section[data-testid="stSidebar"] hr{border-color:#E7E4DC !important;}
   border-color:#CDEEE1 !important;color:#0F6E5C !important;}
 .stButton>button[kind="secondary"]:hover p{color:#0F6E5C !important;}
 
-/* Header action buttons (Back / Clear) — distinct from generic secondary buttons */
-.back-btn button{background:#FFFFFF !important;border:1.5px solid #CFE0FA !important;
-  color:#2563EB !important;}
-.back-btn button p{color:#2563EB !important;}
-.back-btn button:hover{background:#EAF1FB !important;border-color:#93C5FD !important;
-  color:#1D4ED8 !important;}
-.back-btn button:hover p{color:#1D4ED8 !important;}
-.clear-btn button{background:#FFFFFF !important;border:1.5px solid #F6D2C2 !important;
-  color:#C2410C !important;}
-.clear-btn button p{color:#C2410C !important;}
-.clear-btn button:hover{background:#FCEEEA !important;border-color:#E8623D !important;
-  color:#9A3412 !important;}
-.clear-btn button:hover p{color:#9A3412 !important;}
+/* Header action buttons (Back / Clear) — styled via key="..." on st.button,
+   which Streamlit renders as class st-key-<key> on the button's own wrapper
+   div. Using [class*="..."] instead of an exact class match since Streamlit
+   has changed exact class formatting across versions (st-key-x vs stkey_x),
+   and using the universal child selector for text so it doesn't matter
+   whether the label lives in a p, span, or div. !important + html.stApp
+   prefix to outrank Streamlit's base button theme rules. */
+button[class*="st-key-back_btn"],
+[class*="st-key-back_btn"] button{
+  background:#FFFFFF !important;border:1.5px solid #CFE0FA !important;color:#2563EB !important;}
+[class*="st-key-back_btn"] button *{color:#2563EB !important;}
+[class*="st-key-back_btn"] button:hover{
+  background:#EAF1FB !important;border-color:#93C5FD !important;color:#1D4ED8 !important;}
+[class*="st-key-back_btn"] button:hover *{color:#1D4ED8 !important;}
+
+button[class*="st-key-clear_btn"],
+[class*="st-key-clear_btn"] button{
+  background:#FFFFFF !important;border:1.5px solid #F6D2C2 !important;color:#C2410C !important;}
+[class*="st-key-clear_btn"] button *{color:#C2410C !important;}
+[class*="st-key-clear_btn"] button:hover{
+  background:#FCEEEA !important;border-color:#E8623D !important;color:#9A3412 !important;}
+[class*="st-key-clear_btn"] button:hover *{color:#9A3412 !important;}
 .stSelectbox>div>div{border-radius:9px !important;border:1px solid #E7E4DC !important;
   background:#FFFFFF !important;}
 .stAlert{border-radius:11px !important;}
@@ -731,20 +740,16 @@ def render_chat():
             </div>
         </div>""", unsafe_allow_html=True)
     with h2:
-        st.markdown('<div class="back-btn">', unsafe_allow_html=True)
-        if st.button("← Back", help="Back to login screen"):
+        if st.button("← Back", help="Back to login screen", key="back_btn"):
             st.session_state.update({
                 "logged_in":False,"username":None,"role":None,
                 "display_name":None,"dept":None,"initials":None,"messages":[],
             })
             st.rerun()
-        st.markdown('</div>', unsafe_allow_html=True)
     with h3:
-        st.markdown('<div class="clear-btn">', unsafe_allow_html=True)
-        if st.button("🗑️ Clear", help="Clear chat"):
+        if st.button("🗑️ Clear", help="Clear chat", key="clear_btn"):
             st.session_state.messages = []
             st.rerun()
-        st.markdown('</div>', unsafe_allow_html=True)
 
     # ── Welcome banner ───────────────────────────────────────────────────────
     if is_fresh:
